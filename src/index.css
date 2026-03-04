@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", serif;
+  
+  --color-primary: #a67c72; /* Darker dusty rose for contrast */
+  --color-secondary: #edd9d3; /* The requested pink */
+  --color-accent: #8c7a76;
+
+  --animate-pulse-subtle: pulse-subtle 2s infinite ease-in-out;
+  --animate-shimmer: shimmer 3s infinite;
+
+  @keyframes pulse-subtle {
+    0%, 100% { transform: scale(1); box-shadow: 0 4px 6px -1px rgba(37, 211, 102, 0.2), 0 2px 4px -2px rgba(37, 211, 102, 0.1); }
+    50% { transform: scale(1.05); box-shadow: 0 10px 15px -3px rgba(37, 211, 102, 0.4), 0 4px 6px -4px rgba(37, 211, 102, 0.2); }
+  }
+
+  @keyframes shimmer {
+    0% { transform: translateX(-150%) skewX(-20deg); }
+    20%, 100% { transform: translateX(250%) skewX(-20deg); }
+  }
+}
+
+@layer base {
+  body {
+    @apply font-sans bg-[#faf7f6] text-slate-900;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+.section-padding {
+  @apply py-16 md:py-24 px-6 md:px-12 max-w-7xl mx-auto;
+}
+
+.btn-primary {
+  @apply bg-[#25D366] text-white px-8 py-4 rounded-full font-medium hover:bg-[#25D366]/90 transition-all duration-300 inline-flex items-center justify-center gap-2 shadow-md animate-pulse-subtle relative overflow-hidden;
+}
+
+.btn-whatsapp-shimmer {
+  @apply overflow-hidden;
+}
+
+.btn-primary::after, .btn-whatsapp-shimmer::after {
+  content: '';
+  @apply absolute top-0 left-0 w-full h-full bg-linear-to-r from-transparent via-white/40 to-transparent animate-shimmer;
+}
+
+.card {
+  @apply bg-white p-8 rounded-3xl shadow-sm border border-black/5;
+}
