@@ -158,7 +158,7 @@ export default function App() {
           >
             <div className="aspect-[4/5] rounded-[40px] overflow-hidden shadow-2xl border-4 md:border-8 border-white">
               <img 
-                src="/hero-2.png" 
+                src="hero-2.png" 
                 alt="Consultório de Psicologia em Rio Preto" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
@@ -184,7 +184,7 @@ export default function App() {
             <div className="relative">
               <div className="aspect-[3/4] rounded-[60px] overflow-hidden shadow-lg">
                 <img 
-                  src="/hero-2.png" 
+                  src="hero-2.png" 
                   alt="Carline Darim Miglioli - Psicóloga" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
@@ -333,7 +333,7 @@ export default function App() {
             <div className="relative hidden md:block">
               <div className="aspect-square rounded-[40px] overflow-hidden">
                 <img 
-                  src="/hero-1.png" 
+                  src="hero-1.png" 
                   alt="Sala de atendimento acolhedora" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
@@ -408,8 +408,8 @@ export default function App() {
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-4">
-                <img src="/ambiente-1.jpg" alt="Consultório 1" className="rounded-2xl shadow-sm w-full aspect-video object-cover" referrerPolicy="no-referrer" />
-                <img src="/ambiente-2.jpg" alt="Consultório 2" className="rounded-2xl shadow-sm w-full aspect-video object-cover" referrerPolicy="no-referrer" />
+                <img src="ambiente-1.jpg" alt="Consultório 1" className="rounded-2xl shadow-sm w-full aspect-video object-cover" referrerPolicy="no-referrer" />
+                <img src="ambiente-2.jpg" alt="Consultório 2" className="rounded-2xl shadow-sm w-full aspect-video object-cover" referrerPolicy="no-referrer" />
               </div>
             </div>
             
