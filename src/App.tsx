@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import { 
   MessageCircle, 
   MapPin, 
@@ -13,14 +13,29 @@ import {
   Phone,
   Instagram,
   Mail,
-  ArrowRight
+  ArrowRight,
+  Menu,
+  X
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const WHATSAPP_LINK = "https://api.whatsapp.com/send/?phone=17981642255&text=Ol%C3%A1%2C+tudo+bem%3F+Gostaria+de+agendar+uma+consulta+com+a+psic%C3%B3loga+Carline+Darim+Miglioli%21&type=phone_number&app_absent=0";
 
 export default function App() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Close menu when clicking a link
+  const handleMenuClick = () => setIsMenuOpen(false);
+
+  // Prevent scroll when menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isMenuOpen]);
 
   const testimonials = [
     {
@@ -80,13 +95,13 @@ export default function App() {
   ];
 
   return (
-    <div className="min-h-screen selection:bg-primary selection:text-white">
+    <div id="inicio" className="min-h-screen selection:bg-primary selection:text-white">
       {/* SEO Hidden Elements */}
       <h1 className="sr-only">Psicóloga em Rio Preto - Carline Darim Miglioli | Terapia Presencial e Online</h1>
 
       {/* Header/Nav */}
-      <nav className="fixed top-0 w-full z-40 bg-secondary/95 backdrop-blur-md border-b border-black/5 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 h-20 flex items-center justify-between gap-2 relative z-10">
+      <nav className="fixed top-0 w-full z-50 bg-secondary/95 backdrop-blur-md border-b border-black/5">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 h-20 flex items-center justify-between gap-2">
           <div className="flex flex-col min-w-0">
             <span className="font-serif text-base md:text-xl font-bold text-primary leading-tight truncate">Carline Darim Miglioli</span>
             <span className="text-[9px] md:text-[10px] uppercase tracking-wider text-accent font-semibold flex flex-col md:flex-row md:items-center">
@@ -94,25 +109,113 @@ export default function App() {
               <span className="md:before:content-['•_'] md:ml-1">CRP 06/59128-0</span>
             </span>
           </div>
+          
           <div className="flex items-center gap-4 flex-shrink-0">
-            <div className="hidden md:flex items-center gap-8 mr-4">
-              <a href="#sobre" className="text-sm font-medium hover:text-primary transition-colors">Sobre</a>
-              <a href="#atendimento" className="text-sm font-medium hover:text-primary transition-colors">Atendimento</a>
-              <a href="#localizacao" className="text-sm font-medium hover:text-primary transition-colors">Localização</a>
+            {/* Desktop Menu */}
+            <div className="hidden lg:flex items-center gap-6 mr-4">
+              {[
+                { label: 'Início', href: '#inicio' },
+                { label: 'Sobre', href: '#sobre' },
+                { label: 'Especialidades', href: '#atendimento' },
+                { label: 'O que é Logoterapia', href: '#logoterapia' },
+                { label: 'Diferenciais', href: '#diferenciais' },
+                { label: 'Depoimentos', href: '#depoimentos' },
+                { label: 'Localização', href: '#localizacao' },
+                { label: 'Dúvidas Frequentes', href: '#faq' },
+              ].map((link) => (
+                <a 
+                  key={link.label}
+                  href={link.href} 
+                  className="text-[13px] font-medium hover:text-primary transition-colors whitespace-nowrap"
+                >
+                  {link.label}
+                </a>
+              ))}
             </div>
-            <motion.a 
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              href={WHATSAPP_LINK} 
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-[#25D366] text-white px-4 py-2 md:px-6 md:py-2 rounded-full text-[11px] md:text-sm font-bold uppercase md:capitalize hover:bg-[#25D366]/90 transition-all btn-whatsapp-shimmer animate-pulse-subtle whitespace-nowrap shadow-md relative flex items-center justify-center"
+            
+            {/* Mobile Menu Toggle */}
+            <button 
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="lg:hidden p-2 text-primary hover:bg-primary/5 rounded-lg transition-colors"
+              aria-label="Menu"
             >
-              Agendar consulta
-            </motion.a>
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
           </div>
         </div>
+
       </nav>
+
+      {/* Mobile Menu Drawer */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={handleMenuClick}
+              className="fixed inset-0 bg-slate-900/20 backdrop-blur-sm z-[60] lg:hidden"
+            />
+            
+            {/* Drawer */}
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              className="fixed right-0 top-0 bottom-0 w-[280px] bg-white z-[70] lg:hidden shadow-2xl flex flex-col"
+            >
+              <div className="p-6 flex flex-col h-full">
+                <div className="flex items-center justify-between mb-8">
+                  <span className="font-serif font-bold text-primary">Menu</span>
+                  <button 
+                    onClick={handleMenuClick}
+                    className="p-2 hover:bg-slate-50 rounded-full transition-colors"
+                  >
+                    <X className="w-6 h-6 text-slate-400" />
+                  </button>
+                </div>
+
+                <div className="flex flex-col space-y-1 overflow-y-auto">
+                  {[
+                    { label: 'Início', href: '#inicio' },
+                    { label: 'Sobre', href: '#sobre' },
+                    { label: 'Especialidades', href: '#atendimento' },
+                    { label: 'O que é Logoterapia', href: '#logoterapia' },
+                    { label: 'Diferenciais', href: '#diferenciais' },
+                    { label: 'Depoimentos', href: '#depoimentos' },
+                    { label: 'Localização', href: '#localizacao' },
+                    { label: 'Dúvidas Frequentes', href: '#faq' },
+                  ].map((link) => (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      onClick={handleMenuClick}
+                      className="text-base font-medium py-3 px-4 rounded-xl text-slate-600 hover:text-primary hover:bg-primary/5 transition-all"
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+
+                <div className="mt-auto pt-6 border-t border-slate-100">
+                  <a 
+                    href={WHATSAPP_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-[#25D366] text-white p-4 rounded-2xl font-bold text-center shadow-lg flex items-center justify-center gap-2 hover:bg-[#25D366]/90 transition-all"
+                  >
+                    <MessageCircle className="w-5 h-5" />
+                    Agendar via WhatsApp
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
 
       {/* Hero Section */}
       <section className="pt-32 pb-16 md:pt-48 md:pb-32 bg-secondary relative overflow-hidden">
@@ -267,7 +370,7 @@ export default function App() {
       </section>
 
       {/* Logotherapy Section */}
-      <section className="bg-primary text-white overflow-hidden relative">
+      <section id="logoterapia" className="bg-primary text-white overflow-hidden relative">
         <div className="section-padding grid md:grid-cols-2 gap-16 items-center relative z-10">
           <div>
             <h2 className="text-4xl md:text-5xl mb-8 text-white">O que é a Logoterapia?</h2>
@@ -305,7 +408,7 @@ export default function App() {
       </section>
 
       {/* Benefits Section */}
-      <section className="bg-white">
+      <section id="diferenciais" className="bg-white">
         <div className="section-padding">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
@@ -354,7 +457,7 @@ export default function App() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="bg-secondary">
+      <section id="depoimentos" className="bg-secondary">
         <div className="section-padding">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl mb-4">O que dizem os pacientes</h2>
@@ -423,7 +526,7 @@ export default function App() {
                 </div>
               </div>
               <iframe 
-                src="https://maps.google.com/maps?q=R.%20Jos%C3%A9%20Picerni,%20660%20-%20Jardim%20Panorama,%20S%C3%A3o%20Jos%C3%A9%20do%20Rio%20Preto%20-%20SP,%2015091-200&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                src="https://maps.google.com/maps?q=Psic%C3%B3loga%20Carline%20Darim%20Miglioli%20S%C3%A3o%20Jos%C3%A9%20do%20Rio%20Preto&t=&z=15&ie=UTF8&iwloc=&output=embed" 
                 className="w-full h-full border-0" 
                 allowFullScreen={true} 
                 loading="lazy" 
@@ -435,7 +538,7 @@ export default function App() {
       </section>
 
       {/* FAQ Section */}
-      <section className="bg-secondary">
+      <section id="faq" className="bg-secondary">
         <div className="section-padding max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl mb-4">Dúvidas Frequentes</h2>
@@ -537,6 +640,28 @@ export default function App() {
           </div>
         </div>
       </footer>
+
+      {/* Floating WhatsApp Button */}
+      <motion.a
+        href={WHATSAPP_LINK}
+        target="_blank"
+        rel="noopener noreferrer"
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl flex items-center justify-center group"
+      >
+        <motion.div
+          animate={{ scale: [1, 1.2, 1] }}
+          transition={{ repeat: Infinity, duration: 2 }}
+          className="absolute inset-0 bg-[#25D366] rounded-full opacity-30"
+        />
+        <MessageCircle className="w-8 h-8 relative z-10" />
+        <span className="absolute right-full mr-4 bg-white text-slate-800 px-3 py-1 rounded-lg text-sm font-bold shadow-xl opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+          Fale comigo agora
+        </span>
+      </motion.a>
     </div>
   );
 }
