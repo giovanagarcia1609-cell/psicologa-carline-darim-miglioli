@@ -70,7 +70,7 @@ export default function App() {
     },
     {
       title: "Crises Existenciais",
-      description: "Momentos de grandes questionamentos sobre quem você é e qual o seu propósito.",
+      description: "Momentos de grandes questionamentos sobre quem você é e qual é o sentido da sua vida.",
       icon: <ShieldCheck className="w-8 h-8 text-primary" />
     }
   ];
@@ -86,11 +86,23 @@ export default function App() {
     },
     {
       question: "Você atende convênios?",
-      answer: "Atualmente os atendimentos são particulares, mas emitimos recibo para que você possa solicitar o reembolso junto ao seu plano de saúde, caso ele ofereça essa modalidade."
+      answer: (
+        <>
+          Não, os atendimentos são somente particulares.{" "}
+          <a 
+            href={WHATSAPP_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block mt-2 bg-[#25D366] text-white px-4 py-2 rounded-full text-sm font-bold shadow-md hover:bg-[#25D366]/90 transition-all"
+          >
+            Consulte valores pelo whatsapp
+          </a>
+        </>
+      )
     },
     {
       question: "Qual a duração das sessões?",
-      answer: "As sessões individuais têm duração média de 50 minutos e ocorrem semanalmente, podendo ser ajustadas conforme a necessidade de cada processo terapêutico."
+      answer: "As sessões têm duração de 50 minutos a 1 hora e a frequência dependerá de cada caso a ser analisado após os primeiros encontros."
     }
   ];
 
@@ -233,7 +245,7 @@ export default function App() {
               Encontre o <span className="italic">sentido</span> que move sua vida.
             </h2>
             <p className="text-lg md:text-xl text-slate-600 mb-10 leading-relaxed max-w-xl">
-              Atendimento <strong>particular</strong> especializado para <strong>adultos e crianças</strong> em Rio Preto, disponível de forma <strong>presencial ou online</strong>. Através da Logoterapia, ajudo você a enfrentar crises, ansiedade e a redescobrir seu propósito.
+              Atendimento particular especializado para adultos e adolescente em Rio Preto, disponível de forma presencial ou online.
             </p>
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
               <motion.a 
@@ -302,18 +314,15 @@ export default function App() {
             <h2 className="text-4xl md:text-5xl mb-8">Olá, sou Carline Darim Miglioli</h2>
             <div className="space-y-6 text-slate-600 leading-relaxed text-lg">
               <p>
-                Sou psicóloga clínica com <strong>25 anos de formação</strong> pela Universidade Estadual de Londrina (CRP 06/59128-0). Minha missão é ajudar você a encontrar equilíbrio e bem-estar emocional.
+                Sou psicóloga clínica com <strong>26 anos de formação</strong> pela Universidade Estadual de Londrina (CRP 06/59128-0). Minha missão é ajudar você a encontrar equilíbrio e bem-estar emocional.
               </p>
               <p>
-                Especializada em <strong>Logoterapia e Análise Existencial</strong>, uma abordagem centrada no sentido da vida, fundamentada pelo Dr. Viktor Frankl. Acredito na capacidade humana de superar desafios e ressignificar o sofrimento.
-              </p>
-              <p>
-                Ao longo de duas décadas, tenho acompanhado <strong>adultos e crianças</strong> em suas jornadas de autoconhecimento, oferecendo um espaço de escuta ativa, ética e profunda humanidade.
+                Especializada em <strong>Logoterapia e Análise Existencial</strong>, uma abordagem centrada no sentido da vida, fundamentada pelo Dr. Viktor Frankl, acredito na capacidade humana de superar desafios e ressignificar o sofrimento. Ao longo de duas décadas, tenho acompanhado adultos e adolescentes em suas jornadas de autoconhecimento, oferecendo um espaço de escuta ativa, ética e profunda humanidade.
               </p>
             </div>
             <div className="mt-10 grid grid-cols-2 gap-6">
               <div className="flex flex-col">
-                <span className="text-3xl font-serif text-primary font-bold">25+</span>
+                <span className="text-3xl font-serif text-primary font-bold">26+</span>
                 <span className="text-xs uppercase tracking-wider font-bold text-accent">Anos de Experiência</span>
               </div>
               <div className="flex flex-col">
@@ -331,7 +340,7 @@ export default function App() {
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-4xl md:text-5xl mb-6">Como posso te ajudar?</h2>
             <p className="text-slate-600 text-lg">
-              A terapia é um investimento em você. Atendo <strong>adultos e crianças</strong> em questões que impactam a saúde mental e qualidade de vida.
+              A terapia é um investimento em você. Atendo <strong>adultos e adolescente</strong> em questões que impactam a saúde mental e qualidade de vida.
             </p>
           </div>
           
@@ -371,32 +380,21 @@ export default function App() {
 
       {/* Logotherapy Section */}
       <section id="logoterapia" className="bg-primary text-white overflow-hidden relative">
-        <div className="section-padding grid md:grid-cols-2 gap-16 items-center relative z-10">
-          <div>
-            <h2 className="text-4xl md:text-5xl mb-8 text-white">O que é a Logoterapia?</h2>
-            <div className="space-y-6 opacity-90 leading-relaxed text-lg">
-              <p>
-                Fundada pelo Dr. Viktor Frankl, a Logoterapia é reconhecida internacionalmente como a "Terceira Escola Vienense de Psicoterapia".
-              </p>
-              <p>
-                Diferente de outras abordagens, ela foca na <strong>vontade de sentido</strong>. Frankl, sobrevivente de campos de concentração, provou que mesmo nas situações mais extremas, o ser humano pode encontrar um motivo para seguir em frente.
-              </p>
-              <div className="bg-white/10 p-6 rounded-2xl border border-white/20 italic">
-                "Quem tem um 'porquê' para viver suporta quase qualquer 'como'." — Viktor Frankl
-              </div>
-            </div>
+        <div className="section-padding relative z-10">
+          <div className="text-center max-w-4xl mx-auto mb-16">
+            <h2 className="text-4xl md:text-5xl text-white">O que é a Logoterapia e por que ela pode transformar sua vida?</h2>
           </div>
-          <div className="grid grid-cols-1 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               { t: "Foco no Sentido", d: "Ajuda a encontrar direção nas experiências diárias." },
               { t: "Resiliência", d: "Fortalece a capacidade de superar a dor e o sofrimento." },
-              { t: "Liberdade e Responsabilidade", d: "Ensina a tomar decisões alinhadas aos seus valores." }
+              { t: "Liberdade e Responsabilidade", d: "Auxilia na tomada de decisões alinhadas aos seus valores." }
             ].map((item, i) => (
-              <div key={i} className="bg-white/5 p-6 rounded-2xl border border-white/10">
-                <h4 className="font-bold text-xl mb-2 flex items-center gap-2">
-                  <CheckCircle2 className="w-5 h-5 text-white" /> {item.t}
+              <div key={i} className="bg-white/5 p-8 rounded-2xl border border-white/10 flex flex-col items-center text-center">
+                <h4 className="font-bold text-xl mb-4 flex items-center gap-2">
+                  <CheckCircle2 className="w-6 h-6 text-white" /> {item.t}
                 </h4>
-                <p className="text-sm opacity-80">{item.d}</p>
+                <p className="text-base opacity-80">{item.d}</p>
               </div>
             ))}
           </div>
@@ -418,8 +416,7 @@ export default function App() {
                 {[
                   { t: "Atendimento Presencial", d: "Consultório acolhedor em São José do Rio Preto, proporcionando um ambiente neutro e seguro para sua imersão total." },
                   { t: "Atendimento Online", d: "Sessões por vídeo com a mesma qualidade e sigilo, permitindo que você cuide da sua saúde mental de onde estiver." },
-                  { t: "Vínculo e Ética", d: "Independente da modalidade, o compromisso com a ética profissional e a construção de um vínculo sólido permanece o mesmo." },
-                  { t: "Foco no Sentido", d: "A Logoterapia aplicada de forma personalizada, ajudando você a encontrar propósito tanto no presencial quanto no online." }
+                  { t: "Vínculo e Ética", d: "Independente da modalidade, o compromisso com a ética profissional e a construção de um vínculo sólido permanece o mesmo." }
                 ].map((b, i) => (
                   <li key={i} className="flex gap-4">
                     <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-1">
@@ -441,15 +438,6 @@ export default function App() {
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                 />
-              </div>
-              <div className="absolute -bottom-8 -right-8 bg-secondary p-8 rounded-3xl shadow-lg border border-black/5 hidden lg:block">
-                <div className="flex items-center gap-4">
-                  <Clock className="w-10 h-10 text-primary" />
-                  <div>
-                    <span className="block font-bold text-xl">Horários Flexíveis</span>
-                    <span className="text-sm text-accent">Manhã, Tarde e Noite</span>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -506,7 +494,7 @@ export default function App() {
                   <Clock className="w-6 h-6 text-primary flex-shrink-0" />
                   <div>
                     <h4 className="font-bold text-lg mb-1">Atendimento</h4>
-                    <p className="text-slate-600">Segunda a Sexta: 08h às 20h<br />Sábados: Sob consulta</p>
+                    <p className="text-slate-600">Segunda a Sexta: 08h às 19h<br />Sábados: Sob consulta</p>
                   </div>
                 </div>
               </div>
@@ -609,7 +597,7 @@ export default function App() {
             <div className="col-span-2">
               <span className="font-serif text-2xl font-bold text-primary block mb-4">Carline Darim Miglioli</span>
               <p className="text-slate-500 max-w-sm mb-6">
-                Psicóloga clínica com 25 anos de experiência, dedicada a ajudar pessoas a encontrarem sentido e equilíbrio em suas vidas através da Logoterapia.
+                Psicóloga clínica com 26 anos de experiência, dedicada a ajudar pessoas a encontrarem sentido e equilíbrio em suas vidas através da Logoterapia.
               </p>
               <div className="flex gap-4">
                 <a href="#" className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-primary shadow-sm hover:bg-primary hover:text-white transition-all">
