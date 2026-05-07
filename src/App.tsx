@@ -245,7 +245,7 @@ export default function App() {
               Encontre o <span className="italic">sentido</span> que move sua vida.
             </h2>
             <p className="text-lg md:text-xl text-slate-600 mb-10 leading-relaxed max-w-xl">
-              Atendimento particular especializado para adultos e adolescente em Rio Preto, disponível de forma presencial ou online.
+              Atendimento particular especializado para adultos e adolescentes em Rio Preto, disponível de forma presencial ou online.
             </p>
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
               <motion.a 
@@ -314,20 +314,16 @@ export default function App() {
             <h2 className="text-4xl md:text-5xl mb-8">Olá, sou Carline Darim Miglioli</h2>
             <div className="space-y-6 text-slate-600 leading-relaxed text-lg">
               <p>
-                Sou psicóloga clínica com <strong>26 anos de formação</strong> pela Universidade Estadual de Londrina (CRP 06/59128-0). Minha missão é ajudar você a encontrar equilíbrio e bem-estar emocional.
+                Sou psicóloga clínica formada pela <strong>Universidade Estadual de Londrina (UEL)</strong> (CRP 06/59128-0). Minha missão é ajudar você a encontrar equilíbrio e bem-estar emocional.
               </p>
               <p>
-                Especializada em <strong>Logoterapia e Análise Existencial</strong>, uma abordagem centrada no sentido da vida, fundamentada pelo Dr. Viktor Frankl, acredito na capacidade humana de superar desafios e ressignificar o sofrimento. Ao longo de duas décadas, tenho acompanhado adultos e adolescentes em suas jornadas de autoconhecimento, oferecendo um espaço de escuta ativa, ética e profunda humanidade.
+                Especializada em <strong>Logoterapia e Análise Existencial</strong>, uma abordagem centrada no sentido da vida, fundamentada pelo Dr. Viktor Frankl, acredito na capacidade humana de superar desafios e ressignificar o sofrimento. Tenho acompanhado adultos e adolescentes em suas jornadas de autoconhecimento, oferecendo um espaço de escuta ativa, ética e profunda humanidade.
               </p>
             </div>
-            <div className="mt-10 grid grid-cols-2 gap-6">
-              <div className="flex flex-col">
-                <span className="text-3xl font-serif text-primary font-bold">26+</span>
-                <span className="text-xs uppercase tracking-wider font-bold text-accent">Anos de Experiência</span>
-              </div>
+            <div className="mt-10">
               <div className="flex flex-col">
                 <span className="text-3xl font-serif text-primary font-bold">UEL</span>
-                <span className="text-xs uppercase tracking-wider font-bold text-accent">Formação Acadêmica</span>
+                <span className="text-xs uppercase tracking-wider font-bold text-accent">Formação Acadêmica pela Universidade Estadual de Londrina</span>
               </div>
             </div>
           </div>
@@ -340,7 +336,7 @@ export default function App() {
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-4xl md:text-5xl mb-6">Como posso te ajudar?</h2>
             <p className="text-slate-600 text-lg">
-              A terapia é um investimento em você. Atendo <strong>adultos e adolescente</strong> em questões que impactam a saúde mental e qualidade de vida.
+              A terapia é um investimento em você. Atendo <strong>adultos e adolescentes</strong> em questões que impactam a saúde mental e qualidade de vida.
             </p>
           </div>
           
@@ -597,7 +593,7 @@ export default function App() {
             <div className="col-span-2">
               <span className="font-serif text-2xl font-bold text-primary block mb-4">Carline Darim Miglioli</span>
               <p className="text-slate-500 max-w-sm mb-6">
-                Psicóloga clínica com 26 anos de experiência, dedicada a ajudar pessoas a encontrarem sentido e equilíbrio em suas vidas através da Logoterapia.
+                Psicóloga clínica dedicada a ajudar pessoas a encontrarem sentido e equilíbrio em suas vidas através da Logoterapia e Análise Existencial.
               </p>
               <div className="flex gap-4">
                 <a href="#" className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-primary shadow-sm hover:bg-primary hover:text-white transition-all">
